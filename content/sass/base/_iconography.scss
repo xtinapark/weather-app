@@ -1,0 +1,103 @@
+.icon-search {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-search);
+	}
+}
+
+.icon-clouds {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-cloud);
+	}
+	color: $color-foggy;
+}
+
+.icon-clear {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-sun);
+	}
+	color: $color-sunny;
+
+}
+
+.icon-drizzle {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-cloud-rain);
+	}
+	color: $color-sky;
+
+}
+
+.icon-rain {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-umbrella);
+	}
+	color: $color-sky;
+
+}
+
+
+.icon-mist,
+.icon-Smoke,
+.icon-Haze,
+.icon-Dust,
+.icon-Fog,
+.icon-Sand,
+.icon-Dust,
+.icon-Ash,
+.icon-Squall,
+.icon-Tornado {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-smog);
+	}
+	color: $color-sky;
+
+}
+
+.icon-snow {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-snowflake);
+	}
+	color: $color-foggy;
+}
+
+.icon-wind {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-wind);
+	}
+	color: $color-foggy;
+
+}
+
+.icon-thunderstorm {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-bolt);
+	}
+	color: $color-sky;
+
+}
+
+.icon-remove {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-times-circle);
+	}
+}

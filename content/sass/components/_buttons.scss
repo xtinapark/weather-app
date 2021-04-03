@@ -1,0 +1,49 @@
+.s-button {
+	@include button-base;
+}
+
+.s-button--large {
+	@include button-large;
+}
+
+.s-button--small {
+	@include button-small;
+}
+
+.s-button--full {
+	width: 100%;
+}
+
+.s-button--primary {
+	@include button-primary;
+}
+
+.s-button--secondary {
+	@include button-secondary;
+}
+
+.s-button--outline-primary {
+	@include button-outline-primary;
+}
+
+.s-button--outline-secondary {
+	@include button-outline-secondary;
+}
+
+.s-button--cta {
+	@include button-cta;
+}
+
+.s-icon-button {
+	@include button-reset;
+	@include inline-flex(space-between, center, nowrap);
+}
+
+// .s-icon-button__icon {}
+
+.s-icon-button__text {
+	* ~ & {
+		margin-left: spacing(0.5);
+	}
+}
+

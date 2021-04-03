@@ -1,0 +1,56 @@
+// ********************** //
+//    C O N T E N T S     //
+// ********************** //
+
+// HEADER
+
+
+// ------ //
+// SHARED //
+// ------ //
+
+
+.site-header {
+	@include flex(space-between, center, nowrap);
+	background: $black;
+	padding: spacing(1);
+}
+
+	.site-nav-primary {
+		margin: 0;
+		padding: 0;
+	}
+
+	.site-nav-primary__item {
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+		position: relative;
+		padding-left: spacing(1);
+	}
+
+	.site-nav-primary__link {
+		color: $white;
+		text-decoration: none;
+		* {
+			transition: opacity $fade-transition-duration ease-in-out;
+		}
+
+		&:hover {
+			.site-nav-primary__text {
+				opacity: 0;
+			}
+
+			.site-nav-primary__icon {
+				opacity: 1;
+			}
+		}
+	}
+
+	.site-nav-primary__icon {
+		@include center-placed;
+		width: 100%;
+
+		opacity: 0;
+	}
+

@@ -1,0 +1,23 @@
+
+.s-divider {
+	background: $color-border;
+	border: none;
+	height: 2px;
+	margin: 24px 0;
+}
+
+.u-sep {
+	@include self-clear;
+	border-bottom: $border-width solid $color-border;
+	padding: 0 0 spacing(2);
+	margin: 0 0 spacing(2);
+	width: 100%;
+}
+
+.u-border-transparent {
+	border: $border-width solid transparent !important;
+}
+
+.u-border-primary {
+	border: $border-width solid $color-border;
+}

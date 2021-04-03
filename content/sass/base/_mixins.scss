@@ -1,0 +1,473 @@
+// ********************** //
+//    C O N T E N T S     //
+// ********************** //
+
+// MEDIA QUERIES
+// FONT FACE
+// FONT WEIGHT
+// SELF CLEAR
+// PLACEHOLDER
+// VERTICALLY AND/OR CENTRE ALIGNING ELEMENTS
+// HIDE DEFAULT OVERFLOW SCROLL IN IE
+// HIDE DEFAULT FORM ELEMENT STYLING
+// FLEX
+// LOADER
+// FONTAWESOME
+// IONICONS
+// CSS ANIMATION
+// TYPOGRAPHY
+// BUTTONS
+
+
+
+// ------------- //
+// MEDIA QUERIES //
+// ------------- //
+
+@mixin breakpoint($point) {
+	@if $point == desktop {
+		@media (min-width: ($tablet+1)+px) { @content; }
+	}
+
+	@else if $point == tablet {
+		@media (min-width: ($mobile+1)+px) and (max-width: ($tablet)+px) { @content; }
+	}
+
+	@else if $point == mobile {
+		@media (max-width: ($mobile)+px) { @content; }
+	}
+
+	@else if $point == mobile-small {
+		@media (max-width: $mobile-small+px) { @content; }
+	}
+}
+
+@mixin bp($min, $max) {
+	@media (min-width: $min+px) and (max-width: ($max - 1)+px) { @content; }
+}
+
+@mixin bpmin($min) {
+	@media (min-width: $min+px) { @content; }
+}
+
+@mixin bpmax($max) {
+	@media (max-width: ($max - 1)+px) { @content; }
+}
+
+
+
+// --------- //
+// FONT FACE //
+// --------- //
+
+@mixin font-face($style-name, $file, $family, $category: '') {
+    $filepath: '/fonts/' + $family + '/' + $file;
+    @font-face {
+        font-family: $style-name;
+        src: url($filepath + '.eot');
+        src: url($filepath + '.eot?#iefix') format('embedded-opentype'), url($filepath + '.woff') format('woff'), url($filepath + '.ttf')  format('truetype'), url($filepath + '.svg#' + $style-name + '') format('svg');
+    }
+}
+
+
+
+// ----------- //
+// FONT WEIGHT //
+// ----------- //
+
+@mixin font-bold {
+	font-weight: 700 !important;
+}
+
+@mixin font-regular {
+	font-weight: 400 !important;
+}
+
+
+
+// ---------- //
+// SELF CLEAR //
+// ---------- //
+
+@mixin self-clear {
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+
+
+// ----------- //
+// PLACEHOLDER //
+// ----------- //
+
+@mixin ph($color: #000) {
+	::-webkit-input-placeholder {
+		color: $color;
+	}
+
+	::-moz-placeholder {
+		color: $color;
+	}
+
+	:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+
+
+// ------------------------------------------ //
+// VERTICALLY AND/OR CENTRE ALIGNING ELEMENTS //
+// ------------------------------------------ //
+
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin center-placed {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+// ---------------------------------- //
+// HIDE DEFAULT OVERFLOW SCROLL IN IE //
+// ---------------------------------- //
+
+@mixin overflow-scroll {
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;
+	overflow: auto;
+}
+
+
+
+// --------------------------------- //
+// HIDE DEFAULT FORM ELEMENT STYLING //
+// --------------------------------- //
+
+@mixin appearance-none {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+
+
+// ---- //
+// FLEX //
+// ---- //
+
+@mixin flex($justify-content: flex-start, $align-items: flex-start, $wrap: nowrap) {
+	display: -ms-flexbox;
+	display: flex;
+
+	@include justify-content($justify-content);
+	@include align-items($align-items);
+	@include flex-wrap($wrap);
+}
+
+@mixin inline-flex($justify-content: flex-start, $align-items: flex-start, $wrap: nowrap) {
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+
+	@include justify-content($justify-content);
+	@include align-items($align-items);
+	@include flex-wrap($wrap);
+}
+
+@mixin justify-content($justify-content: flex-start) {
+	-ms-flex-pack: $justify-content;
+	justify-content: $justify-content;
+}
+
+@mixin align-items($align-items: flex-start) {
+	-ms-flex-align: $align-items;
+	align-items: $align-items;
+}
+
+@mixin align-self($align-self: flex-start) {
+	-ms-flex-item-align: $align-self;
+	align-self: $align-self;
+}
+
+@mixin flex-direction($direction: row) {
+	-ms-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap: nowrap) {
+	-ms-flex-wrap: $wrap;
+	flex-wrap: $wrap;
+}
+
+@mixin flex-grow($grow: 1) {
+	-ms-flex-positive: $grow;
+	flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink: 1) {
+	-ms-flex-negative: $shrink;
+	flex-shrink: $shrink;
+}
+
+@mixin flex-basis($basis: auto) {
+	-ms-flex-preferred-size: $basis;
+	flex-basis: $basis;
+}
+
+
+
+// ------ //
+// LOADER //
+// ------ //
+
+@mixin loader($size, $thickness, $color1, $color2) {
+	@include animation(spin, 1.5s, 0s, infinite);
+	border: $thickness+px solid $color1;
+	border-top: $thickness+px solid $color2;
+	border-radius: 50%;
+	width: $size+px;
+	height: $size+px;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+
+// ----------- //
+// FONTAWESOME //
+// ----------- //
+
+// @mixin icons($fa-var, $fa-weight) {
+// 	&:before {
+// 		content: unquote("\"#{ $fa-var }\"");
+// 		display: inline-block;
+// 		font-style: normal;
+// 	}
+
+// 	@if $fa-weight == light {
+// 		&:before {
+// 			font-family: 'Font Awesome 5 Pro';
+// 			font-weight: 300;
+// 		}
+// 	}
+
+// 	@if $fa-weight == reg {
+// 		&:before {
+// 			font-family: 'Font Awesome 5 Pro';
+// 			font-weight: 400;
+// 		}
+// 	}
+
+// 	@if $fa-weight == solid {
+// 		&:before {
+// 			font-family: 'Font Awesome 5 Pro';
+// 			font-weight: 900;
+// 		}
+// 	}
+
+// 	@if $fa-weight == brand {
+// 		&:before {
+// 			font-family: 'Font Awesome 5 Brands';
+// 		}
+// 	}
+
+// 	@if $fa-weight == duotone {
+// 		&:before {
+// 			font-family: 'Font Awesome 5 Duotone';
+// 		}
+// 	}
+// }
+
+
+
+// @mixin icon-reg($icon) {
+// 	@include fa-icon;
+// 	@extend .fas;
+// 	@extend .fa-#{$icon};
+// }
+
+
+
+
+// ---------- //
+// TYPOGRAPHY //
+// ---------- //
+
+@mixin font-size($font-size-group, $line-height-override: null) {
+	$font-size: map-deep-get($font-size-groups, $font-size-group, font-size);
+	$line-height: map-deep-get($font-size-groups, $font-size-group, line-height);
+
+	@if $font-size != null {
+		font-size: rem($font-size);
+	}
+
+	@if $line-height-override != null {
+		line-height: $line-height-override;
+	} @else if $line-height != null {
+		line-height: $line-height / $font-size;
+	}
+}
+
+@mixin header-3xl {
+	@include font-size(3xl);
+}
+
+@mixin header-2xl {
+	@include font-size(2xl);
+}
+
+@mixin header-xl {
+	@include font-size(xl);
+}
+
+@mixin header-l {
+	@include font-size(l);
+	@include font-bold;
+}
+
+@mixin text-body {
+	@include font-size(body);
+	@include font-regular;
+}
+
+@mixin text-small-body {
+	@include font-size(small-body);
+	@include font-regular;
+}
+
+@mixin text-meta {
+	@include font-size(meta);
+	@include font-regular;
+}
+
+@mixin text-button {
+	@include font-size(body, 0.875);
+}
+
+
+
+// ------- //
+// BUTTONS //
+// ------- //
+
+@mixin button-reset {
+	@include appearance-none;
+	background: transparent;
+	border: $border-width solid transparent;
+	cursor: pointer;
+}
+
+@mixin button-base {
+	@include button-reset;
+	@include text-button;
+	border-radius: $border-radius;
+	display: inline-block;
+	padding: spacing(0.75) spacing(2);
+	text-align: center;
+	text-decoration: none;
+	transition: background $fade-transition-duration,
+				color $fade-transition-duration,
+				border-color $fade-transition-duration;
+	&[disabled],
+	&.is-disabled {
+		background: $color-button-disabled;
+		border-color: $color-button-disabled;
+		cursor: default;
+		pointer-events: none;
+	}
+}
+
+@mixin button-primary {
+	background-color: $color-button-primary;
+	border-color: $color-button-primary;
+	color: $white;
+	&:focus,
+	&:hover {
+		background-color: $color-button-primary-hover;
+		border-color: $color-button-primary-hover;
+	}
+}
+
+@mixin button-secondary {
+	background-color: $color-button-secondary;
+	border-color: $color-button-secondary;
+	color: $white;
+	&:focus,
+	&:hover {
+		background-color: $color-button-secondary-hover;
+		border-color: $color-button-secondary-hover;
+	}
+}
+
+@mixin button-outline-primary {
+	border-color: $color-button-primary;
+	color: $color-text-primary;
+	&:focus,
+	&:hover {
+		border-color: $color-button-primary-hover;
+	}
+	&[disabled],
+	&.is-disabled {
+		background: transparent;
+		border-color: $color-button-disabled;
+	}
+}
+
+@mixin button-outline-secondary {
+	border-color: $color-button-secondary;
+	color: $color-text-primary;
+	&:focus,
+	&:hover {
+		border-color: $color-button-secondary-hover;
+	}
+}
+
+@mixin button-cta {
+	background: $color-button-cta;
+	border-color: $color-button-cta;
+	color: $white;
+	&:focus,
+	&:hover {
+		background-color: $color-button-cta-hover;
+		border-color: $color-button-cta-hover;
+	}
+}
+
+@mixin button-large {
+	padding: spacing(1) spacing(2);
+}
+
+@mixin button-small {
+	padding: spacing(0.5) spacing(2);
+}
+
+@mixin text-link {
+	@include button-reset;
+	color: $color-text-standout;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: color 0.2s;
+	background: transparent;
+	border: 0;
+	&:focus,
+	&:hover {
+		color: $color-text-primary;
+	}
+}
+

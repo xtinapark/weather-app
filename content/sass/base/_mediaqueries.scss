@@ -1,0 +1,47 @@
+.dt-only {
+	@include breakpoint(tablet) {
+		display: none !important;
+	}
+	@include breakpoint(mobile) {
+		display: none !important;
+	}
+	@include breakpoint(mobileSmall) {
+		display: none !important;
+	}
+}
+
+.dt-tab {
+	@include breakpoint(mobile) {
+		display: none !important;
+	}
+	@include breakpoint(mobileSmall) {
+		display: none !important;
+	}
+}
+
+.tab-only {
+	@include breakpoint(desktop) {
+		display: none !important;
+	}
+	@include breakpoint(mobile) {
+		display: none !important;
+	}
+	@include breakpoint(mobileSmall) {
+		display: none !important;
+	}
+}
+
+.tab-mob {
+	@include breakpoint(desktop) {
+		display: none !important;
+	}
+}
+
+.mob-only {
+	@include breakpoint(desktop) {
+		display: none !important;
+	}
+	@include breakpoint(tablet) {
+		display: none !important;
+	}
+}

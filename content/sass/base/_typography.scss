@@ -1,0 +1,160 @@
+
+.s-heading-1 {
+	@include header-3xl;
+}
+
+.s-heading-2 {
+	@include header-2xl;
+}
+
+.s-heading-3 {
+	@include header-xl;
+}
+
+.s-heading-4 {
+	@include header-l;
+}
+
+.s-copy,
+.s-text-body {
+	@include text-body;
+}
+
+.s-copy-small,
+.s-text-small {
+	@include text-small-body;
+}
+
+.s-copy-xsmall {
+	@include text-meta;
+}
+
+.s-text-link {
+	@include text-link;
+	&--subtext {
+		color: $color-text-subtext;
+		&:focus,
+		&:hover {
+			color: $color-brand-1;
+		}
+	}
+}
+
+
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.u-color-text {
+	color: $color-text-primary !important;
+}
+
+.u-color-subtext {
+	color: $color-text-subtext !important;
+}
+
+.u-color-white {
+	color: $white !important;
+}
+
+.u-color-black {
+	color: $black !important;
+}
+
+.u-color-sale {
+	color: $color-text-sale !important;
+}
+
+.u-color-laybuy {
+	color: $laybuy !important;
+}
+
+.u-color-afterpay {
+	color: $afterpay !important;
+}
+
+.u-color-oxipay {
+	color: $oxipay !important;
+}
+
+.u-color-pinterest {
+	color: $pinterest;
+}
+
+.u-color-facebook {
+	color: $facebook;
+}
+
+.u-color-twitter {
+	color: $twitter;
+}
+
+.u-color-instagram {
+	color: $instagram;
+}
+
+.u-color-snapchat {
+	color: $snapchat;
+}
+
+.u-color-youtube {
+	color: $youtube;
+}
+
+.u-color-linkedin {
+	color: $linkedin;
+}
+
+.u-bold {
+	@include font-bold;
+}
+
+.u-regular {
+	@include font-regular;
+}
+
+.u-italic {
+	font-style: italic !important;
+}
+
+.u-uppercase {
+	text-transform: uppercase !important;
+}
+
+.u-lowercase {
+	text-transform: none !important;
+}
+
+.u-capitalize {
+	text-transform: capitalize !important;
+}
+
+.u-underline-none {
+	text-decoration: none !important;
+}
+
+.u-underline {
+	text-decoration: underline !important;
+}
+
+.u-line-through {
+	text-decoration: line-through !important;
+}
+
+.u-align-left {
+	text-align: left !important;
+}
+
+.u-align-center {
+	text-align: center !important;
+}
+
+.u-align-right {
+	text-align: right !important;
+}
+
+
+
+// -------

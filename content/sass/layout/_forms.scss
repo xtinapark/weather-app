@@ -1,0 +1,793 @@
+// ********************** //
+//    C O N T E N T S     //
+// ********************** //
+
+// FORM
+// LABEL
+// TEXT INPUT
+// TEXT INPUT AND BUTTON
+// INPUT TYPE TEL : INC/DEC +/-
+// INPUT with icon
+// INPUT with prefix
+// INPUT with suffix
+// SELECT BOXES - default drop down and styled drop down
+// CHECK AND RADIO BOXES
+// DISABLED ELEMENTS
+// DATA-LABEL
+// SWITCH
+// COMBOBOX
+// VALIDATION ERROR
+// FORM MESSAGES
+// INPUT TOGGLE
+// PASSWORD RULES
+
+
+
+// ---- //
+// FORM //
+// ---- //
+
+.s-form {
+	@include self-clear;
+}
+
+.s-form__fieldset {
+	border: none;
+	margin: spacing(3) 0 spacing(2);
+	padding: 0;
+}
+
+.s-form__legend {
+	display: block;
+	margin-bottom: spacing(1);
+}
+
+.s-form__info {
+	color: $color-text-instruction;
+	margin: 0 0 spacing(1) 0;
+}
+
+
+
+// ----- //
+// LABEL //
+// ----- //
+
+.s-form__label {
+	display: block;
+	margin-bottom: spacing(1);
+}
+
+
+
+// ---------- //
+// TEXT INPUT //
+// ---------- //
+
+.s-input {
+	@include ph($color-text-placeholder);
+	position: relative;
+	margin: 0 0 spacing(1);
+	input[type="tel"],
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="number"],
+	input[type="search"] {
+		border: $border-width solid $color-form-field-border;
+		border-radius: $border-radius;
+		color: inherit;
+		font-size: 1rem;
+		line-height: 1;
+		padding: rem(15px) spacing(1);
+		min-width: 0; // workaround for not shrinking with flexbox
+		text-align: left;
+		transition: border-color 0.2s ease;
+		width: 100%;
+		&:focus {
+			border-color: $color-form-field-border-focus;
+		}
+	}
+	input[type="number"] { // hide number picker
+	    -moz-appearance:textfield;
+	}
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button { // hide number picker
+		-webkit-appearance:none;
+		margin: 0;
+	}
+	input[disabled],
+	input[readonly] {
+		background-color: $color-form-field-bg-disabled;
+		pointer-events: none;
+	}
+
+	/*
+		When a form field is invalid, add the `is-invalid` class:
+		<div class="s-input is-invalid"></div>
+	*/
+	&.is-invalid {
+		color: $color-text-error;
+		textarea,
+		input,
+		.s-dropdown,
+		.s-dropdown-styled {
+			border-color: $color-form-field-border-error;
+			&:focus {
+				border-color: inherit;
+			}
+			&:before {
+				color: inherit;
+			}
+		}
+		&[data-label]::after {
+			color: inherit;
+		}
+	}
+	/*
+		When a form field is valid, add the `is-valid` class:
+		<div class="s-input is-valid"></div>
+	*/
+	&.is-valid {
+		// @extend .s-input[data-label].j-label;
+		// @include icons($fa-var-check, solid);
+		&:before {
+			color: $color-text-success;
+			position: absolute;
+			right: spacing(0.5);
+			text-align: center;
+			top: 50%;
+			transform: translateY(-50%);
+			width: spacing(2);
+		}
+		input {
+			padding-right: spacing(2);
+		}
+	}
+}
+
+.s-textarea {
+	@include ph($color-text-placeholder);
+	margin: 0 0 spacing(1);
+	position: relative;
+	textarea {
+		border: $border-width solid $color-form-field-border;
+		border-radius: $border-radius;
+		padding: spacing(1);
+		text-align: left;
+		transition: border-color 0.2s ease;
+		resize: vertical;
+		width: 100%;
+		&:focus {
+			border-color: $color-form-field-border-focus;
+		}
+	}
+}
+
+
+
+// --------------------- //
+// TEXT INPUT AND BUTTON //
+// --------------------- //
+
+.s-input-button-wrap { //input and button stuck together
+	@include flex(space-between, stretch, nowrap);
+	.s-input {
+		@include flex-grow(1);
+		margin-bottom: 0;
+		input {
+			border-radius: $border-radius 0 0 $border-radius;
+			border-right: 0;
+			height: 100%;
+		}
+	}
+	.s-button {
+		border-radius: 0 $border-radius $border-radius 0;
+		height: auto;
+		line-height: 1;
+	}
+}
+
+.s-input-wrap { //input and button NOT stuck together but in one row
+	@include flex(space-between, stretch, nowrap);
+	.s-input {
+		@include flex-grow(1);
+		margin-bottom: 0;
+		input {
+			height: 100%;
+		}
+	}
+	.s-button {
+		margin-left: spacing(0.5);
+	}
+}
+
+
+
+// ---------------------------- //
+// INPUT TYPE TEL : INC/DEC +/- //
+// ---------------------------- //
+
+.s-input-increment {
+	@include inline-flex(space-between, stretch, nowrap);
+	width: auto;
+	input[type] {
+		border-radius: 0;
+		max-width: 5rem;
+		text-align: center;
+		width: 50%;
+	}
+	.s-dec,
+	.s-inc {
+		background-color: $color-bg-light;
+		border: none;
+		cursor: pointer;
+		display: block;
+		padding: spacing(0.5) spacing(1);
+		position: relative;
+		text-align: center;
+	}
+	.s-inc {
+		// @include icons($fa-var-plus, light);
+		border-radius: 0 $border-radius $border-radius 0;
+	}
+	.s-dec {
+		// @include icons($fa-var-minus, light);
+		border-radius: $border-radius 0 0 $border-radius;
+	}
+}
+
+
+// --------------- //
+// INPUT WITH ICON //
+// --------------- //
+
+.s-input-icon {
+	input[type] {
+		padding-right: spacing(4);
+	}
+	*[class^="icon-"] {
+		font-size: 1.5rem;
+		position: absolute;
+		right: spacing(1);
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: $z-layer;
+	}
+}
+
+
+
+// ----------------- //
+// INPUT WITH PREFIX //
+// ----------------- //
+
+.s-input-prefix {
+	overflow: hidden;
+	input[type] {
+		padding-left: spacing(4);
+	}
+	&.has-overlay {
+		input[type] {
+			padding-left: spacing(3);
+		}
+	}
+}
+
+.s-input-prefix__label {
+	@include flex(center, center, nowrap);
+	background-color: $color-bg-light;
+	bottom: $border-width;
+	left: $border-width;
+	line-height: 1;
+	pointer-events: none;
+	position: absolute;
+	top: $border-width;
+	text-align: center;
+	width: spacing(3);
+	.has-overlay > & {
+		background-color: transparent;
+		color: $color-text-subtext;
+	}
+}
+
+
+
+// ----------------- //
+// INPUT WITH SUFFIX //
+// ----------------- //
+
+.s-input-suffix {
+	overflow: hidden;
+	input[type] {
+		padding-right: spacing(4);
+	}
+	&.has-overlay {
+		input[type] {
+			padding-right: spacing(3);
+		}
+	}
+}
+
+.s-input-suffix__label {
+	@include flex(center, center, nowrap);
+	background-color: $color-bg-light;
+	bottom: $border-width;
+	right: $border-width;
+	line-height: 1;
+	pointer-events: none;
+	position: absolute;
+	top: $border-width;
+	text-align: center;
+	width: spacing(3);
+	.has-overlay > & {
+		background-color: transparent;
+		color: $color-text-subtext;
+	}
+}
+
+
+
+// ------------ //
+// SELECT BOXES //
+// ------------ //
+
+.s-dropdown,
+.s-dropdown-styled {
+	// @include icons($fa-var-chevron-down, light);
+	background: $white;
+	border: $border-width solid $color-form-field-border;
+	border-radius: $border-radius;
+	position: relative;
+	overflow: hidden;
+	transition: border-color 0.3s;
+	&:before {
+		color: $color-text-primary;
+		height: $height-large;
+		line-height: $height-large;
+		pointer-events: none;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		text-align: center;
+		width: spacing(3);
+		z-index: $z-dropdown;
+	}
+}
+
+.s-dropdown {
+	select {
+		@include appearance-none;
+		cursor: pointer;
+		line-height: 1;
+		min-height: spacing(3);
+		padding: spacing(1) spacing(2) spacing(1) spacing(1);
+		width: 100%;
+	}
+	select::-ms-expand {
+		display: none;
+	}
+}
+
+.s-dropdown-styled {
+	&:focus,
+	&:hover {
+		border-color: $color-form-field-border-focus;
+	}
+	// &.is-active {
+	// 	// @include icons($fa-var-chevron-up, light);
+	// }
+	.s-toggler-list {
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+		display: block;
+		padding: spacing(1) spacing(2) spacing(1) spacing(1);
+		position: relative;
+		text-align: left;
+		width: 100%;
+	}
+	ul {
+		background: $white;
+		border: $border-width solid $color-form-field-border;
+		box-sizing: content-box;
+		display: none;
+		left: -1px;
+		list-style-type: none;
+		max-height: 10rem;
+		overflow: auto;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		z-index: $z-dropdown;
+		li {
+			color: $color-text-subtext;
+			cursor: pointer;
+			line-height: 1;
+			padding: spacing(1);
+			transition: color 0.3s;
+			&:hover {
+				color: $color-text-primary;
+			}
+		}
+	}
+}
+
+.s-dropdown-border {
+	@extend .s-dropdown-styled;
+	border: none;
+	border-bottom: $border-width solid $color-form-field-border;
+}
+
+
+
+// --------------------- //
+// CHECK AND RADIO BOXES //
+// --------------------- //
+
+.s-checkbox {
+	margin: spacing(1) 0;
+	input[type="checkbox"] {
+		opacity: 0;
+		position: absolute;
+	}
+	label {
+		cursor: pointer;
+		display: block;
+		padding: 0 0 0 spacing(2);
+		position: relative;
+		&:before {
+			background: $white;
+			border: $border-width solid $color-form-field-border;
+			border-radius: $border-radius;
+			content: '';
+			font-size: 0.75em;
+			height: spacing(1);
+			left: 0;
+			line-height: spacing(1);
+			position: absolute;
+			text-align: center;
+			top: spacing(0.25);
+			width: spacing(1);
+		}
+	}
+	input:checked + label {
+		// @include icons($fa-var-check, solid);
+		&:before {
+			background: $color-brand-1;
+			border-color: $color-brand-1;
+			color: $white;
+		}
+	}
+}
+
+.s-radio {
+	margin: 0 0 spacing(1) 0;
+	position: relative;
+	[type="radio"] {
+		opacity: 0;
+		position: absolute;
+	}
+	[type="radio"] + label {
+		$radio-size: spacing(1);
+		color: $color-text-subtext;
+		cursor: pointer;
+		display: inline-block;
+		padding-left: spacing(2);
+		position: relative;
+		&:before {
+			background: $color-bg-light;
+			border: spacing(0.5) solid $color-bg-light;
+			border-radius: 100%;
+			content: '';
+			height: $radio-size;
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: border 0.2s ease-in-out;
+			width: $radio-size;
+		}
+	}
+	[type="radio"]:checked + label {
+		color: $color-brand-1;
+	}
+	[type="radio"]:checked + label:before {
+		background: $white;
+		border: spacing(0.25) solid $color-brand-1;
+	}
+}
+
+.s-radio-button {
+	@include flex-basis(5rem);
+	.s-radio {
+		margin: 0;
+	}
+}
+
+.s-radio-button__label {
+	border: $border-width solid $color-form-field-border;
+	line-height: 1;
+	padding: rem(10px) spacing(0.5) rem(10px) spacing(1);
+	width: 100%;
+	[type="radio"]:checked + & {
+		border-color: $color-form-field-border;
+	}
+	[type="radio"] + &:before {
+		left: spacing(0.5);
+	}
+}
+
+.s-option-group {
+	&--inline {
+		@include flex(flex-start, center, wrap);
+		margin: spacing(-1);
+		> * {
+			margin-bottom: 0;
+			padding: spacing(1);
+		}
+	}
+}
+
+
+
+// ----------------- //
+// DISABLED ELEMENTS //
+// ----------------- //
+
+.s-input,
+.s-textarea {
+	&.is-disabled {
+		pointer-events: none;
+		textarea,
+		input,
+		.s-dropdown,
+		.s-dropdown-styled {
+			background: $color-form-field-bg-disabled;
+			color: $color-text-subtext;
+		}
+	}
+}
+
+
+
+// ------------ //
+//  DATA-LABEL  //
+// ------------ //
+
+.s-input,
+.s-textarea {
+	&[data-label]:after {
+		@include text-meta;
+		color: $color-text-subtext;
+		content: attr(data-label);
+		display: block;
+		left: spacing(1);
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		top: spacing(2);
+		transition: top .3s ease-in-out, opacity .3s ease-in-out;
+		z-index: $z-layer;
+		@include bpmin($lg) {
+			top: spacing(-1);
+		}
+	}
+	&[data-label].j-label {
+		&:after {
+			opacity: 1;
+			top: spacing(0.5);
+		}
+		input,
+		textarea,
+		select,
+		.s-toggler-list {
+			padding-bottom: rem(6px);
+			padding-top: rem(24px);
+		}
+	}
+}
+
+
+
+// ------ //
+// SWITCH //
+// ------ //
+
+.s-switch {
+	cursor: pointer;
+	display: inline-block;
+	height: spacing(2);
+	margin-right: spacing(1);
+	position: relative;
+	vertical-align: middle;
+	width: spacing(4);
+	input {
+		opacity: 0;
+		position: absolute;
+	}
+}
+
+.s-switch__toggle {
+	$size: spacing(1.5);
+	background-color: $color-bg-light;
+	border-radius: $size;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: 0.4s;
+	&:before {
+		background-color: $white;
+		border-radius: 50%;
+		bottom: 4px;
+		content: '';
+		height: $size;
+		left: 4px;
+		position: absolute;
+		transition: .4s;
+		width: $size;
+	}
+	input:checked + & {
+		background-color: $color-brand-1;
+	}
+	input:focus + & {
+		box-shadow: 0 0 1px $color-brand-1;
+	}
+	input:checked + &:before {
+		transform: translateX(spacing(2));
+	}
+}
+
+
+
+// -------- //
+// COMBOBOX //
+// -------- //
+
+.ps-combobox {
+	position: relative;
+}
+
+// .ps-combobox__input {}
+
+.ps-combobox__results {
+	background-color: $white;
+	border: $border-width solid $color-form-field-border;
+	border-top: none;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	z-index: $z-dropdown;
+}
+
+.ps-combobox__list {
+	list-style: none;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+
+.ps-combobox__option {
+	cursor: pointer;
+	padding: spacing(0.25) spacing(1);
+	&.is-highlighted,
+	&:focus,
+	&:hover {
+		background-color: $color-bg-light;
+	}
+}
+
+
+
+// ---------- //
+// VALIDATION //
+// ---------- //
+
+.s-input-error {
+	color: $color-text-error;
+	margin: spacing(0.5) spacing(1) spacing(1);
+	position: relative;
+}
+
+
+
+// ------------- //
+// FORM MESSAGES //
+// ------------- //
+
+.s-info,
+.s-success,
+.s-warn,
+.s-error {
+	border-radius: $border-radius;
+	border: $border-width solid;
+	color: $white;
+	margin-bottom: spacing(1);
+	margin-top: spacing(1);
+	padding: spacing(0.5) spacing(1) spacing(0.5) spacing(2);
+	position: relative;
+	&:before {
+		left: 0;
+		line-height: 1.5;
+		position: absolute;
+		text-align: center;
+		width: spacing(2);
+	}
+}
+
+.s-info {
+	// @include icons($fa-var-question-circle, solid);
+	background: $color-info;
+	border-color: $color-info;
+}
+
+.s-warn {
+	// @include icons($fa-var-exclamation-triangle, solid);
+	background: $color-warning;
+	border-color: $color-warning;
+}
+
+.s-error {
+	// @include icons($fa-var-times, light);
+	background: $color-error;
+	border-color: $color-error;
+}
+
+.s-success {
+	// @include icons($fa-var-check, light);
+	background: $color-success;
+	border-color: $color-success;
+}
+
+
+
+// ------------ //
+// INPUT TOGGLE //
+// ------------ //
+
+
+.s-input-toggle {
+	// @include icons($fa-var-eye, light);
+	@include button-reset;
+	color: $color-text-placeholder;
+	position: absolute;
+	right: spacing(1);
+	top: 50%;
+	transform: translateY(-50%);
+	// &.is-toggled {
+	// 	// @include icons($fa-var-eye-slash, light);
+	// }
+}
+
+
+
+// -------------- //
+// PASSWORD RULES //
+// -------------- //
+
+.s-password-rules {
+	list-style: none;
+	margin-bottom: spacing(1);
+	padding: 0;
+}
+
+.s-password-rules__item {
+	@include font-size(meta, 2);
+	color: $color-text-placeholder;
+	// @include icons($fa-var-minus, light);
+	&:before {
+		width: spacing(1);
+	}
+	&.is-valid {
+		// @include icons($fa-var-check, light);
+		color: $color-text-primary;
+	}
+}
+
+
+

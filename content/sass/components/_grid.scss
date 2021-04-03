@@ -1,0 +1,51 @@
+.s-left-col {
+	float: left;
+	width: 49%;
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+.s-right-col {
+	float: right;
+	width: 49%;
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+.s-row-flex {
+	@include flex(space-between, stretch, wrap);
+	width: 100%;
+}
+
+.s-wide--two {
+	width: calc(50% - #{$banner-space});
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+.s-wide--one-third,
+.s-wide--three {
+	width: calc(33.33% - #{$banner-space});
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+.s-wide--four {
+	width: calc(25% - #{$banner-space});
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+.s-wide--two-third {
+	width: calc(66.66% - #{$banner-space});
+	@include breakpoint(mobile) {
+		width: 100%;
+	}
+}
+
+

@@ -1,0 +1,23 @@
+
+.s-list {
+	li {
+		list-style-position: inside;
+	}
+}
+
+.s-list--disc {
+	list-style-type: disc;
+	padding: 0 0 0 spacing(1);
+	text-indent: spacing(-1);
+}
+
+.s-list--nostyle {
+	list-style-type: none;
+	margin: spacing(1) 0;
+}
+
+.s-list--number {
+	padding: 0 0 0 spacing(1);
+	text-indent: spacing(-1);
+}
+

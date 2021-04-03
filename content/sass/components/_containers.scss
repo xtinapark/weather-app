@@ -1,0 +1,55 @@
+.s-width {
+	@include self-clear;
+	margin: 0 auto;
+	max-width: calc(1600px - #{spacing(2)});
+	padding: 0 spacing(1);
+	width: 100%;
+}
+
+.s-width--full {
+	max-width: none;
+	width: 100%;
+}
+
+.s-width--large {
+	max-width: calc(1800px - #{spacing(2)});
+}
+
+.s-width--medium {
+	max-width: calc(1400px - #{spacing(2)});
+}
+
+.s-width--small {
+	max-width: calc(900px - #{spacing(2)});
+}
+
+.s-width--xsmall {
+	max-width: calc(600px - #{spacing(2)});
+}
+
+.s-image {
+	overflow: hidden;
+	a {
+		display: block;
+	}
+	svg,
+	img {
+		display: block;
+		margin: auto;
+		width: 100%;
+	}
+}
+
+.s-video {
+	height: 0;
+	padding-bottom: 56.25%;
+	position: relative;
+	width: 100%;
+	iframe {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}

@@ -1,0 +1,211 @@
+// ********************** //
+//    C O N T E N T S     //
+// ********************** //
+
+// SITE VARIABLES
+// COLOUR VARIABLES
+// FONT WEIGHT VARIABLES
+// FONT SIZE VARIABLES
+// LINE HEIGHT VARIABLES
+// LAYOUT VARIABLES
+// ANIMATION VARIABLES
+// BACKWARD COMPATIBILITY
+
+
+
+// -------------- //
+// SITE VARIABLES //
+// -------------- //
+
+$font-family-primary: 'Open Sans', sans-serif;
+$font-family-secondary: 'Arial', sans-serif;
+
+$fa-font-path: "../fonts/fontawesome/";
+$border-radius: 6px;
+$border-width: 1px;
+$divider-width: 2px;
+
+
+
+// ---------------- //
+// COLOUR VARIABLES //
+// ---------------- //
+
+$white: #FFFFFF;
+$grey: #4C5059;
+$black: #0b0b14;
+
+$color-brand-1: #CF0F14;
+$color-brand-2: #C4C4C4;
+$color-success: #1EBA54;
+$color-error: #FF0000;
+$color-info: #46A2EA;
+$color-warning: #F5CD5E;
+$color-sale: #FF0000;
+
+$color-sky: #2384D9;
+$color-sunny: #F2CA52;
+$color-foggy: #DCDEDC;
+
+$color-bg-light: #F2B66D;
+$color-bg-panel: #FFFFFF;
+$color-bg-curtain: rgba($black, 0.5);
+
+$color-text-primary: #252526;
+$color-text-subtext: #4C5059;
+$color-text-placeholder: #4C5059;
+$color-text-instruction: #4C5059;
+$color-text-inverse: #FFFFFF;
+$color-text-standout: #D97823;
+$color-text-success: #1EBA54;
+$color-text-sale: #FF0000;
+$color-text-error: #FF0000;
+
+$color-button-primary: #CF0F14;
+$color-button-primary-hover: darken($color-button-primary, 10%);
+$color-button-secondary: #414141;
+$color-button-secondary-hover: darken($color-button-secondary, 10%);
+$color-button-cta: #1EBA54;
+$color-button-cta-hover: darken($color-button-cta, 10%);
+$color-button-disabled: #CCCCCC;
+
+$color-form-field-border: #ECECEC;
+$color-form-field-border-focus: darken($color-form-field-border, 10%);
+$color-form-field-border-success: #1EBA54;
+$color-form-field-border-error: #FF0000;
+$color-form-field-bg-disabled: #F1F1F1;
+
+$color-border: #CCCCCC;
+
+/* Third-party */
+
+$laybuy: #786DFF;
+$afterpay: #1a7eaf;
+$oxipay: #fb8a23;
+
+$pinterest: #BD081C;
+$facebook: #4267b2;
+$twitter: #38A1F3;
+$instagram: #231F20;
+$snapchat: #FFFC00;
+$youtube: #ED3833;
+$linkedin: #0077B5;
+
+
+
+// --------------------- //
+// FONT WEIGHT VARIABLES //
+// --------------------- //
+
+$weight-thin: 100;
+$weight-light: 300;
+$weight-regular: 400;
+$weight-bold: 700;
+$weight-black: 900;
+
+
+
+// ------------------- //
+// FONT SIZE VARIABLES //
+// ------------------- //
+
+$font-size-groups: (
+	3xl: (
+		font-size: 40px,
+		line-height: 56px
+	),
+	2xl: (
+		font-size: 36px,
+		line-height: 48px
+	),
+	xl: (
+		font-size: 28px,
+		line-height: 40px
+	),
+	l: (
+		font-size: 20px,
+		line-height: 32px
+	),
+	body: (
+		font-size: 16px,
+		line-height: 24px
+	),
+	small-body: (
+		font-size: 14px,
+		line-height: 24px
+	),
+	meta: (
+		font-size: 12px,
+		line-height: 16px
+	),
+);
+
+
+
+// ---------------- //
+// LAYOUT VARIABLES //
+// ---------------- //
+
+// Bootstrap Settings
+$grid-gutter-width: 16px; // Must be px value
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 360px,
+	md: 750px,
+	lg: 1200px,
+	xl: 1600px
+);
+
+$sm: map-get($grid-breakpoints, sm) / 1px;
+$md: map-get($grid-breakpoints, md) / 1px;
+$lg: map-get($grid-breakpoints, lg) / 1px;
+$xl: map-get($grid-breakpoints, xl) / 1px;
+
+$banner-space: 0.5rem;
+$spacing-unit: 1rem;
+
+$height: 32px;
+$height-large: 40px;
+
+// Z-Index
+$z-layer: 1;
+$z-dropdown: 9;
+$z-overlay: 99;
+$z-sticky: 999;
+$z-fixed: 9999;
+$z-curtain: 99999;
+$z-popup: 999999;
+
+
+
+// ------------------- //
+// ANIMATION VARIABLES //
+// ------------------- //
+
+$fade-transition-duration: 0.4s;
+$slide-transition-duration: 0.5s;
+$ease-in: ease-in;
+$ease-out: ease-out;
+
+
+
+// ----------------------- //
+// BACKWARD COMPATIBILITY //
+// ----------------------- //
+
+/*
+	These variables shouldn't be used on the site
+	They are used for backward compatibility in core
+*/
+
+$tablet: $lg;
+$mobile: $md;
+$mobile-small: $sm;
+
+$color-primary: $color-brand-1;
+$color-secondary: $color-brand-2;
+$color-background: $color-bg-light;
+$color-text: $color-text-primary;
+$color-subtext: $color-text-subtext;
+$color-link: $color-text-standout;

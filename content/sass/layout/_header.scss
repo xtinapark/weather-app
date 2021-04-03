@@ -1,0 +1,129 @@
+// ********************** //
+//    C O N T E N T S     //
+// ********************** //
+
+// SHARED
+// CITY LIST
+// SEARCH FORM
+
+// OVERLAY
+
+
+// ------ //
+// SHARED //
+// ------ //
+
+html {
+	position:relative;
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+	@include text-body;
+	font-family: $font-family-primary;
+	color: $color-text-primary;
+	background: $black;
+	color: $white;
+}
+
+.section {
+	margin-bottom: spacing(4);
+}
+
+// ------- //
+// OVERLAY //
+// ------- //
+
+.s-overlay {
+	background: $color-bg-curtain;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: opacity $fade-transition-duration ease-in-out;
+	z-index: 100;
+	&.is-active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+
+
+// --------- //
+// CITY LIST //
+// --------- //
+
+.city-wrap {
+	position: relative;
+	width: calc(50% - 2rem);
+	margin: auto;
+	padding: spacing(2);
+	text-align: center;
+	background: $white;
+	border-radius: $border-radius;
+	color: $color-text-primary;
+}
+
+.city-list__icon {
+	@include font-size(2xl);
+}
+
+.city-list__temperature {
+	@include font-size(2xl);
+}
+
+// .remove-city-button {
+// 	position: absolute;
+// 	right: 0;
+// 	top: 0;
+// 	color: $color-subtext;
+// }
+
+
+
+// ----------- //
+// SEARCH FORM //
+// ----------- //
+
+.no-height {
+	max-height: 0px;
+	overflow: hidden;
+}
+
+.search-form {
+	transition: max-height 0.3s linear;
+	.s-input-button-wrap {
+		background: transparent;
+		border-bottom: 1px $white solid;
+	}
+
+	.s-input {
+		@include ph($white);
+		input[type="text"] {
+			@include font-size(l);
+			border: 0;
+			background: transparent;
+		}
+	}
+
+	.search-button {
+		@include font-size(body);
+		color: $white;
+		background: transparent;
+		border: 0;
+		&:hover {
+			color: $color-primary;
+		}
+	}
+}
