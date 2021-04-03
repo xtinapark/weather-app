@@ -1,83 +1,18 @@
 (function($) {
 
-	function join(t, a, s) {
-		function format(m) {
-		   let f = new Intl.DateTimeFormat('en', m);
-		   return f.format(t);
-		}
-		return a.map(format).join(s);
-	 }
-
-	 const a = [{day: 'numeric'}, {month: 'short'}, {year: 'numeric'}];
-	 const date = join(new Date, a, '-');
-
-	// for ( a = currentDay; a < currentDay + 5; a++ ) {
-
-	// 	$('.overview').append (
-	// 		'<div class="container container-' + a + '">'
-	// 		+ '<div class="date-container">'
-	// 		+ '<h2 class="date date-' + a + '">' + moment().add(a,'days').format("ddd") + '</h2>'
-	// 		+ '<div class="day day-' + a + '">' + moment().add(a,'days').format("MMMM D") + '</div>'
-	// 		+ '</div>'
-	// 		+ '</div>');
-	// 	$('.date-0').html("Today");
-
-	// 	var maxTempArray = [];
-	// 	var minTempArray = [];
-	// 	var iconArray = [];
-	// 	var descArray = [];
-	// 	var humidArray = [];
-	// 	var windArray = [];
-
-	// 	for ( i = 0; i < d.list.length; i++ ) {
-	// 		var timeCheck = d.list[i].dt_txt.indexOf(moment().add(a,'days').format("YYYY-MM-DD"));
-	// 		if (timeCheck > - 1) {
-	// 			maxTempArray.push(d.list[i].main.temp_max);
-	// 			minTempArray.push(d.list[i].main.temp_min);
-	// 			iconArray.push(d.list[i].weather[0].id);
-	// 			descArray.push(d.list[i].weather[0].description);
-	// 			humidArray.push(d.list[i].main.humidity);
-	// 			windArray.push(d.list[i].wind.speed);
-	// 		}
-	// 	}
-
-    //         // $(".container-" + a).append(
-    //         //     '<div class="three">'
-    //         //     + '<div class="weather-icon">' + '<i class="wi wi-owm-' + findMostCommon(iconArray) + '"></i></div>'
-    //         //     + '<div class="weather-desc">' + findMostCommon(descArray) + '</div>'
-    //         //     + '<div class="temp">'
-    //         //         + '<div class="temp-max">'
-    //         //             + Math.round(Math.max.apply(Math, maxTempArray)) + '&deg;'
-    //         //                 + '<div class="temp-desc desc-1">High</div>'
-    //         //             + '</div>'
-    //         //         + '<div class="temp-and">&mdash;</div>'
-    //         //         + '<div class="temp-min">'
-    //         //             + Math.round(Math.min.apply(Math, minTempArray)) + '&deg;'
-    //         //                 + '<div class="temp-desc desc-2">Low</div>'
-    //         //         + '</div>'
-    //         //     + '</div>'
-    //         //     + '<br />' + 'Humidity: ' + findMostCommon(humidArray) + '%'
-    //         //     + '<br />' + 'Wind Speed: ' + Math.round(findMostCommon(windArray)) + 'mph'
-    //         //     + '</div>'
-    //         //     + '</div>');
-    //         // var topTest = setWeatherClass(findMostCommon(iconArray));
-    //         // $(".container-" + a).addClass(topTest);
-    // }
-
-
 	$(document).on('submit', '#j-search-form', function(e) {
+
+		const api = {
+			$geoCodingApi: 'https://api.openweathermap.org/geo/1.0/direct',
+			$apiKey: 'e727b72a36203da805bf1ce55c36d074',
+		}
 
 		const search = {
 			$form: $("#j-search-form"),
 			$input: $(".j-search-input"),
 			$inputValue: $(".j-search-input").val(),
 			$error: $(".s-input-error"),
-			$result: $(".search-result"),
-			// $cityListItem: $(".city-list__item"),
-			$apiKey: "e727b72a36203da805bf1ce55c36d074",
-			// remove: function(city) {
-			// 	search.$cityListItem.attr('data-name', city).remove();
-			// },
+			$currentResult: $(".search-result--current"),
 			reset: function() {
 				search.$error.text('');
 				search.$form.trigger('reset');
@@ -93,8 +28,6 @@
 			}
 		}
 
-		// let cityListItems = search.$cityList.find(".city-list__item");
-		// let cityListArray = Array.from(cityListItems);
 
 		// Remove country from input value
 		if (search.$inputValue.includes(",")) {
@@ -110,30 +43,32 @@
 		// Check if the city already exists in the result table
 		e.preventDefault();
 
+
+		// Ajax call for the current weather
 		$.ajax({
-			url: 'https://api.openweathermap.org/data/2.5/weather?q='+ search.$inputValue + '&appid=' + search.$apiKey + '&units=metric',
+			url: 'https://api.openweathermap.org/data/2.5/weather?q=' + search.$inputValue + '&appid=' + api.$apiKey + '&units=metric&lang=en',
 			type: 'post',
 			dataType: 'json',
 		})
+
 		.done(function(response) {
 
 			//  Add icon variable to control icon type (refer to _iconography.scss)
 			let icon = response.weather[0].main.toLowerCase();
 
-			console.log(response.weather);
-
 			search.hideSearch();
 
 			// Add city to the city list array
-			search.$result.append (
-				'<div class="city-wrap" data-name="' + response.name + '"><span class="date">'+ date +'</span><p class="city-list__name">'+ response.name +'</p><div class="city-list__temperature">' + Math.ceil(response.main.temp) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + response.weather[0].description + '</figcaption></figure></div>'
+			search.$currentResult.append (
+				'<div class="city-wrap" data-name="' + response.name + '"><p class="city-list__name">'+ response.name +'</p><div class="city-list__temperature">' + Math.ceil(response.main.temp) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + response.weather[0].description + '</figcaption></figure></div><button type="button" class="s-button s-button--text j-show-weekly">View this week</button>'
 			);
 
 			$('body').addClass(icon);
 
+			setTimeout(search.reset, 3000);
+
 		})
 		.fail(function(jqXHR) {
-
 			let errors = jqXHR.responseJSON.message;
 
 			search.$error.removeClass('is-hidden').text(errors);
@@ -141,15 +76,62 @@
 			// ** Add code to disable input field before form resets.
 
 			setTimeout(search.reset, 3000);
-
-
 		});
 
-		// Reset form
-		search.reset;
+
+		// weekly weather function binding
+		$(document).on('click', '.j-show-weekly', showWeeklyWeather);
 
 
+		// Event handler to show weekly weather
+		function showWeeklyWeather() {
+			$.ajax({
+				url: 'https://api.openweathermap.org/geo/1.0/direct' + '?q=' + search.$inputValue + ',NZ' + '&limit=' + 1 + '&appid=' + api.$apiKey + '&units=metric',
+				type: 'get',
+				dataType: 'json',
+			})
+			// Get Coordinates
+			.done(function(response) {
+				let params = {
+					lat: response[0].lat,
+					lon: response[0].lon,
+					units: 'metric',
+				};
+
+				let apiEndPoint = 'https://api.openweathermap.org/data/2.5/onecall';
+
+				$.ajax({
+					url: apiEndPoint + '?lat=' + params.lat + '&lon=' + params.lon + '&exclude=minutely,hourly' + '&appid=' + api.$apiKey + '&units=' + params.units + '&lang=en'
+				})
+
+				// Get result
+				.done(function(response) {
+					let weeklyArray = response.daily.slice(0, 7);
+
+					var test = '';
+
+					for (i = 0; i < weeklyArray.length; i++) {
+						test += 'test';
+					}
+
+					$('.test').html(test);
+
+					search.$currentResult.hide();
+				})
+
+			})
+			.fail(function(jqXHR) {
+				let errors = jqXHR.responseJSON.message;
+
+				search.$error.removeClass('is-hidden').text(errors);
+
+				// ** Add code to disable input field before form resets.
+
+				setTimeout(search.reset, 3000);
+			});
+		}
 	});
+
 
 
 }(jQuery));
