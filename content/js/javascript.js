@@ -13,6 +13,7 @@
 			$inputValue: $(".j-search-input").val(),
 			$error: $(".s-input-error"),
 			$currentResult: $(".search-result--current"),
+			$weeklyResult: $(".search-result--weekly"),
 			reset: function() {
 				search.$error.text('');
 				search.$form.trigger('reset');
@@ -50,7 +51,6 @@
 			type: 'post',
 			dataType: 'json',
 		})
-
 		.done(function(response) {
 
 			//  Add icon variable to control icon type (refer to _iconography.scss)
@@ -85,6 +85,8 @@
 
 		// Event handler to show weekly weather
 		function showWeeklyWeather() {
+			search.$currentResult.hide();
+
 			$.ajax({
 				url: 'https://api.openweathermap.org/geo/1.0/direct' + '?q=' + search.$inputValue + ',NZ' + '&limit=' + 1 + '&appid=' + api.$apiKey + '&units=metric',
 				type: 'get',
@@ -106,17 +108,23 @@
 
 				// Get result
 				.done(function(response) {
-					let weeklyArray = response.daily.slice(0, 7);
+					search.$currentResult.hide();
 
-					var test = '';
+					let weeklyArray = response.daily.slice(0, 7);
+					let weeklyItem = '';
+					let icon = '';
+
 
 					for (i = 0; i < weeklyArray.length; i++) {
-						test += 'test';
+						icon = weeklyArray[i].weather[0].main.toLowerCase();
+
+						weeklyItem += '<div class="city-wrap"><div class="city-wrap__weekly>"<div class="city-list__temperature">' + Math.ceil(weeklyArray[i].temp.day) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + weeklyArray[i].weather[0].description + '</figcaption></figure></div></div>';
+
 					}
 
-					$('.test').html(test);
+					search.$weeklyResult.append(weeklyItem);
 
-					search.$currentResult.hide();
+
 				})
 
 			})
