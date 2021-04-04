@@ -38,6 +38,13 @@
 			color: $color-brand-1;
 		}
 	}
+	&--white {
+		color: $white;
+		&:focus,
+		&:hover {
+			color: $color-brand-2;
+		}
+	}
 }
 
 

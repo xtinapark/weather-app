@@ -65,14 +65,29 @@ body {
 // --------- //
 
 .city-wrap {
-	position: relative;
-	width: calc(50% - 2rem);
-	margin: auto;
-	padding: spacing(2);
+	outline: 1px red solid;
 	text-align: center;
+	color: $color-text-primary;
+	.search-result--current & {
+		width: calc(50% - 2rem);
+		margin: auto;
+	}
+	.search-result--weekly & {
+		width: calc(25% - 2rem);
+		margin: spacing(1);
+	}
+}
+
+.city__content {
 	background: $white;
 	border-radius: $border-radius;
-	color: $color-text-primary;
+	.search-result--current & {
+		padding: spacing(2);
+
+	}
+	.search-result--weekly & {
+		padding: spacing(1);
+	}
 }
 
 .city-list__icon {
@@ -126,4 +141,8 @@ body {
 			color: $color-primary;
 		}
 	}
+}
+
+.search-result--weekly {
+	@include flex(center, stretch, wrap);
 }

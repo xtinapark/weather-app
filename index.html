@@ -30,7 +30,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 	<!-- END OF GOOGLE FONT LINKS -->
-	<script src="content/js/jquery-3-6.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="content/sass/main.css"/>
 </head>
@@ -55,36 +54,37 @@
 			<section class="section section--search">
 				<div class="s-width s-width--xsmall">
 					<h2 class="s-heading-2 u-align-center">Weather Search</h2>
-					<form id="j-search-form" action="submit" class="s-form search-form">
+					<form action="submit" class="s-form j-search-form">
 						<div class="s-input-button-wrap">
 							<div class="s-input ">
 								<input class="j-search-input" type="text" placeholder="Region">
 							</div>
-							<button type="submit" class="s-button s-button--primary j-search-button search-button">GO</button>
+							<button type="submit" class="s-button s-button--primary j-search-button"><span class="icon-search"></span></button>
 						</div>
 
-						<div class="j-search-error s-input-error is-hidden"></div>
+						<div class="s-input-error"></div>
 					</form>
 
 				</div>
 			</section>
 
-			<section class="section section--search-result">
+			<section class="section section--search-result is-hidden">
 				<div class="s-width s-width--small">
-					<div class="search-result search-result--current">
-					</div>
+					<ul class="city-list s-list s-list--nostyle">
+					</ul>
 
-					<div class="search-result search-result--weekly">
-					</div>
-
+					<button type="button" class="s-button s-button--primary j-back-to-daily">I want to see today's weather only</button>
 				</div>
 			</section>
 		</main>
+
+
 
 		<footer></footer>
 
 	</div>
 
+	<script src="content/js/jquery-3-6.js"></script>
 	<script src="content/js/javascript.js"></script>
 
 </body>

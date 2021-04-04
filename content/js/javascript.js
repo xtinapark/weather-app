@@ -60,7 +60,7 @@
 
 			// Add city to the city list array
 			search.$currentResult.append (
-				'<div class="city-wrap" data-name="' + response.name + '"><p class="city-list__name">'+ response.name +'</p><div class="city-list__temperature">' + Math.ceil(response.main.temp) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + response.weather[0].description + '</figcaption></figure></div><button type="button" class="s-button s-button--text j-show-weekly">View this week</button>'
+				'<div class="city-wrap" data-name="' + response.name + '"><div class="city__content"><p class="city-list__name">'+ response.name +'</p><div class="city-list__temperature">' + Math.ceil(response.main.temp) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + response.weather[0].description + '</figcaption></figure></div><button type="button" class="s-text-link s-text-link--white j-show-weekly">View this week</button></div>'
 			);
 
 			$('body').addClass(icon);
@@ -85,7 +85,8 @@
 
 		// Event handler to show weekly weather
 		function showWeeklyWeather() {
-			search.$currentResult.hide();
+			search.$currentResult.addClass('is-hidden');
+			search.$weeklyResult.removeClass('is-hidden');
 
 			$.ajax({
 				url: 'https://api.openweathermap.org/geo/1.0/direct' + '?q=' + search.$inputValue + ',NZ' + '&limit=' + 1 + '&appid=' + api.$apiKey + '&units=metric',
@@ -108,7 +109,8 @@
 
 				// Get result
 				.done(function(response) {
-					search.$currentResult.hide();
+					search.$currentResult.addClass('is-hidden');
+					search.$weeklyResult.removeClass('is-hidden');
 
 					let weeklyArray = response.daily.slice(0, 7);
 					let weeklyItem = '';
@@ -118,12 +120,11 @@
 					for (i = 0; i < weeklyArray.length; i++) {
 						icon = weeklyArray[i].weather[0].main.toLowerCase();
 
-						weeklyItem += '<div class="city-wrap"><div class="city-wrap__weekly>"<div class="city-list__temperature">' + Math.ceil(weeklyArray[i].temp.day) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + weeklyArray[i].weather[0].description + '</figcaption></figure></div></div>';
+						weeklyItem += '<div class="city-wrap"><div class="city__content"><div class="city-wrap__weekly>"<div class="city-list__temperature">' + Math.ceil(weeklyArray[i].temp.day) + '<sup></sup></div><figure><span class="city-list__icon icon-' + icon + '"></span><figcaption class="city-list__text">' + weeklyArray[i].weather[0].description + '</figcaption></figure></div></div></div>';
 
 					}
 
 					search.$weeklyResult.append(weeklyItem);
-
 
 				})
 

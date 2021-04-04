@@ -6558,6 +6558,12 @@ readers do not read off random characters that represent icons */
 .s-text-link--subtext:focus, .s-text-link--subtext:hover {
   color: #CF0F14;
 }
+.s-text-link--white {
+  color: #FFFFFF;
+}
+.s-text-link--white:focus, .s-text-link--white:hover {
+  color: #C4C4C4;
+}
 
 a {
   color: inherit;
@@ -7881,14 +7887,28 @@ body {
 }
 
 .city-wrap {
-  position: relative;
+  outline: 1px red solid;
+  text-align: center;
+  color: #252526;
+}
+.search-result--current .city-wrap {
   width: calc(50% - 2rem);
   margin: auto;
-  padding: 2rem;
-  text-align: center;
+}
+.search-result--weekly .city-wrap {
+  width: calc(25% - 2rem);
+  margin: 1rem;
+}
+
+.city__content {
   background: #FFFFFF;
   border-radius: 6px;
-  color: #252526;
+}
+.search-result--current .city__content {
+  padding: 2rem;
+}
+.search-result--weekly .city__content {
+  padding: 1rem;
 }
 
 .city-list__icon {
@@ -7937,6 +7957,13 @@ body {
 }
 .search-form .search-button:hover {
   color: #CF0F14;
+}
+
+.search-result--weekly {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
 }
 
 .site-header {
