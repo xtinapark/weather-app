@@ -11,7 +11,7 @@
 			$form: $("#j-search-form"),
 			$input: $(".j-search-input"),
 			$inputValue: $(".j-search-input").val(),
-			$error: $(".s-input-error"),
+			$error: $(".j-error"),
 			$currentResult: $(".search-result--current"),
 			$weeklyResult: $(".search-result--weekly"),
 			reset: function() {

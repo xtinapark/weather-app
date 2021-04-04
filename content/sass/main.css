@@ -7947,6 +7947,7 @@ body {
   line-height: 1.6;
   border: 0;
   background: transparent;
+  padding-left: 0;
 }
 .search-form .search-button {
   font-size: 1rem;
@@ -7954,6 +7955,7 @@ body {
   color: #FFFFFF;
   background: transparent;
   border: 0;
+  padding-right: 0;
 }
 .search-form .search-button:hover {
   color: #CF0F14;

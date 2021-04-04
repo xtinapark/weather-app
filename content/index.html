@@ -3,9 +3,8 @@
 <head>
 	<title>Can I go to the beach today?</title>
 	<link rel="canonical" href="">
-
 	<meta name="og:type" property="og:type" content="website">
-	<meta name="og:title" property="og:title" content="CP Test">
+	<meta name="og:title" property="og:title" content="Christina Park">
 	<meta name="og:image" property="og:image" content="">
 	<meta name="og:url" property="og:url" content="">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -50,18 +49,20 @@
 		</header>
 
 		<main class="content">
+			<h1 class="is-not-visible">Current Weather</h1>
+
 			<section class="section section--search">
 				<div class="s-width s-width--xsmall">
-					<h1 class="s-heading-2 u-align-center">Weather Search</h1>
-					<form action="submit" class="s-form search-form j-search-form">
+					<h2 class="s-heading-2 u-align-center">Weather Search</h2>
+					<form action="submit" class="s-form j-search-form">
 						<div class="s-input-button-wrap">
 							<div class="s-input ">
 								<input class="j-search-input" type="text" placeholder="Region">
 							</div>
-							<button type="submit" class="search-button s-button s-button--primary j-search-button">GO</button>
+							<button type="submit" class="s-button s-button--primary j-search-button"><span class="icon-search"></span></button>
 						</div>
 
-						<div class="j-error s-input-error"></div>
+						<div class="s-input-error"></div>
 					</form>
 
 				</div>
@@ -69,16 +70,15 @@
 
 			<section class="section section--search-result is-hidden">
 				<div class="s-width s-width--small">
-					<div class="search-result search-result--current">
-					</div>
+					<ul class="city-list s-list s-list--nostyle">
+					</ul>
 
-					<div class="search-result search-result--weekly">
-					</div>
-
-					<!-- <button type="button" class="s-button s-button--primary j-back-to-daily">I want to see today's weather only</button> -->
+					<button type="button" class="s-button s-button--primary j-back-to-daily">I want to see today's weather only</button>
 				</div>
 			</section>
 		</main>
+
+
 
 		<footer></footer>
 
