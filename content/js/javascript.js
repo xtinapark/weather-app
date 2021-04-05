@@ -145,8 +145,6 @@
 						date = new Date(weeklyArray[i].dt * 1000 - (response.timezone_offset * 1000)).toISOString().split("T")[0]; // minus
 
 						weeklyItem += '<div class="city-wrap"><div class="city__content"><div>' + date + '</div><figure class="city-weather"><span class="city-weather__icon icon-' + icon + '"></span><figcaption class="city-weather__text">' + weeklyArray[i].weather[0].description + '</figcaption></figure><div class="city-wrap__weekly"><div class="city__temperature">' + Math.ceil(weeklyArray[i].temp.day) + '<sup>&#8451;</sup></div></div></div></div>';
-
-
 					}
 
 					search.$weeklyResult.append(weeklyItem);
