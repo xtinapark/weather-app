@@ -6,9 +6,41 @@
 
 
 // ------ //
-// SHARED //
+// HEADER //
 // ------ //
 
+
+.site-logo {
+	@include font-size(3xl);
+	transition: color $color-transition-duration linear;
+	&:hover,
+	&:focus {
+		color: $color-brand-1;
+	}
+}
+
+.site-nav-primary {
+	@include font-size(3xl);
+	@include flex(flex-end, center, nowrap);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	.site-nav-primary__item {
+		position: relative;
+	}
+
+	.site-nav-primary__text {
+		@include center-placed;
+		@include font-size(meta);
+		font-family: $font-family-primary;
+		display: block;
+		color: $black;
+		text-transform: uppercase;
+		line-height: 0.9;
+		margin-top: spacing(0.5);
+	}
+}
 
 .site-header {
 	@include flex(space-between, center, nowrap);
@@ -16,41 +48,4 @@
 	padding: spacing(1);
 }
 
-	.site-nav-primary {
-		margin: 0;
-		padding: 0;
-	}
-
-	.site-nav-primary__item {
-		display: inline-block;
-		vertical-align: middle;
-		text-align: center;
-		position: relative;
-		padding-left: spacing(1);
-	}
-
-	.site-nav-primary__link {
-		color: $white;
-		text-decoration: none;
-		* {
-			transition: opacity $fade-transition-duration ease-in-out;
-		}
-
-		&:hover {
-			.site-nav-primary__text {
-				opacity: 0;
-			}
-
-			.site-nav-primary__icon {
-				opacity: 1;
-			}
-		}
-	}
-
-	.site-nav-primary__icon {
-		@include center-placed;
-		width: 100%;
-
-		opacity: 0;
-	}
 

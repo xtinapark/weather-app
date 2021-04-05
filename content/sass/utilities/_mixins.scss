@@ -448,3 +448,37 @@
 	}
 }
 
+
+/*
+	The following classes should stay as is, but you can add to this list if needed.
+	The values should go up in 4px increments.
+*/
+
+// p/m for margin/padding
+// t/r/l/b for top/right/left/bottom
+
+.u-m-auto {
+	margin: auto !important;
+}
+
+
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+	/*
+		some examples of generated classes:
+		.u-mt-4 { margin-top: 4px !important; };
+		.u-p-none { padding: 0 !important; };
+	*/
+	.u-#{$abbrev}-none {
+		#{$prop}: 0 !important;
+	}
+
+	@for $i from 0 through 20 {
+		.u-#{$abbrev}t-#{$i * 4} { #{$prop}-top: ($i * 4) + px !important; }
+		.u-#{$abbrev}r-#{$i * 4} { #{$prop}-right: ($i * 4) + px !important; }
+		.u-#{$abbrev}b-#{$i * 4} { #{$prop}-bottom: ($i * 4) + px !important; }
+		.u-#{$abbrev}l-#{$i * 4} { #{$prop}-left: ($i * 4) + px !important; }
+		.u-#{$abbrev}-#{$i * 4} { #{$prop}: ($i * 4) + px !important; }
+	}
+}
+

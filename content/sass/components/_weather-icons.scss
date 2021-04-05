@@ -1,0 +1,44 @@
+
+body {
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+	&.rain:before {
+		background-image: url("../images/bg-rain.png");
+		animation: rain $fade-transition-duration linear infinite;
+		opacity: 0;
+	}
+	&.clear {
+		background: #87CEFA;
+		background: linear-gradient(to bottom, #87CEFA 0%, #78BFEB 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87CEFA), color-stop(100%, #78BFEB));
+		background: -webkit-linear-gradient(top, #87CEFA 0%, #78BFEB 100%);
+		background: -moz-linear-gradient(top, #87CEFA 0%, #78BFEB 100%);
+		background: -o-linear-gradient(top, #87CEFA 0%, #78BFEB 100%);
+		background: -ms-linear-gradient(top, #87CEFA 0%, #78BFEB 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87CEFA', endColorstr='#78BFEB', GradientType=0);
+		box-shadow: inset 0 1px 0 #96DDFF;
+		-webkit-box-shadow: inset 0 1px 0 #96DDFF;
+		-moz-box-shadow: inset 0 1px 0 #96DDFF;
+
+	}
+}
+
+@keyframes rain {
+	0% {
+		background-position: 0 0;
+		opacity: 1;
+	}
+
+	100% {
+		background-position: 8% 80%;
+		opacity: 1;
+	}
+}
+

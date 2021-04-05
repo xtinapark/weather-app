@@ -6,6 +6,24 @@
 	}
 }
 
+.icon-umbrella-beach {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-umbrella-beach);
+	}
+	color: $white;
+}
+
+.icon-calendar {
+	@extend %fa-icon;
+	@extend .fas;
+	&:before {
+		content: fa-content($fa-var-calendar);
+	}
+	color: $white;
+}
+
 .icon-clouds {
 	@extend %fa-icon;
 	@extend .fas;
@@ -47,15 +65,15 @@
 
 
 .icon-mist,
-.icon-Smoke,
-.icon-Haze,
-.icon-Dust,
-.icon-Fog,
-.icon-Sand,
-.icon-Dust,
-.icon-Ash,
-.icon-Squall,
-.icon-Tornado {
+.icon-smoke,
+.icon-haze,
+.icon-dust,
+.icon-fog,
+.icon-sand,
+.icon-dust,
+.icon-ash,
+.icon-squall,
+.icon-tornado {
 	@extend %fa-icon;
 	@extend .fas;
 	&:before {

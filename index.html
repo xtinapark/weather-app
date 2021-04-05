@@ -35,16 +35,28 @@
 	<link rel="stylesheet" type="text/css" href="content/sass/main.css"/>
 </head>
 <body>
-	<div id="">
+	<div id="wrapper">
 
 		<header class="site-header">
 			<div class="site-logo-wrap">
 				<a href="/" class="site-nav__logo site-logo">
-					logo
+					<span class="icon-umbrella-beach"></span>
 				</a>
 			</div>
 			<nav class="site-nav">
 				<ul class="site-nav-primary">
+					<li class="site-nav-primary__item">
+						<button class="s-text-link s-text-link--white j-show-current">
+							<span class="icon-calendar icon-calendar--current"></span>
+							<span class="site-nav-primary__text">Now</span>
+						</button>
+					</li>
+					<li class="site-nav-primary__item">
+						<button class="s-text-link s-text-link--white j-show-weekly">
+							<span class="icon-calendar icon-calendar--weekly"></span>
+							<span class="site-nav-primary__text">This Week</span>
+						</button>
+					</li>
 				</ul>
 			</nav>
 		</header>
@@ -52,8 +64,8 @@
 		<main class="content">
 			<section class="section section--search">
 				<div class="s-width s-width--xsmall">
-					<h1 class="s-heading-2 u-align-center">Weather Search</h1>
-					<form action="submit" class="s-form search-form j-search-form">
+					<form action="submit" id="j-search-form" class="s-form search-form">
+						<h1 class="j-page-heading s-heading-2 u-align-center">Weather Search</h1>
 						<div class="s-input-button-wrap">
 							<div class="s-input ">
 								<input class="j-search-input" type="text" placeholder="Region">
@@ -67,15 +79,15 @@
 				</div>
 			</section>
 
-			<section class="section section--search-result is-hidden">
+			<section class="section section--search-result">
 				<div class="s-width s-width--small">
 					<div class="search-result search-result--current">
 					</div>
 
-					<div class="search-result search-result--weekly">
+					<div class="search-result search-result--weekly is-hidden">
+						<!-- <button type="button" class="s-text-link s-text-link--white back-to-daily-button j-show-current">I want to see today's weather only</button> -->
 					</div>
 
-					<!-- <button type="button" class="s-button s-button--primary j-back-to-daily">I want to see today's weather only</button> -->
 				</div>
 			</section>
 		</main>

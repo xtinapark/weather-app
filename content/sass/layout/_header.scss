@@ -3,10 +3,10 @@
 // ********************** //
 
 // SHARED
-// CITY LIST
+// CITY CONTENT
 // SEARCH FORM
-
-// OVERLAY
+// SEARCH RESULT
+// CONTENT TOGGLING BUTTON
 
 
 // ------ //
@@ -30,80 +30,66 @@ body {
 	color: $color-text-primary;
 	background: $black;
 	color: $white;
+	width: 100%;
+	height: 100vh;
+	animation-delay: 1s;
 }
 
 .section {
 	margin-bottom: spacing(4);
 }
 
-// ------- //
-// OVERLAY //
-// ------- //
-
-.s-overlay {
-	background: $color-bg-curtain;
-	bottom: 0;
-	cursor: pointer;
-	left: 0;
-	opacity: 0;
-	pointer-events: none;
-	position: absolute;
-	right: 0;
-	top: 0;
-	transition: opacity $fade-transition-duration ease-in-out;
-	z-index: 100;
-	&.is-active {
-		opacity: 1;
-		pointer-events: auto;
-	}
-}
 
 
-
-// --------- //
-// CITY LIST //
-// --------- //
+// ------------ //
+// CITY CONTENT //
+// ------------ //
 
 .city-wrap {
-	outline: 1px red solid;
 	text-align: center;
 	color: $color-text-primary;
-	.search-result--current & {
-		width: calc(50% - 2rem);
-		margin: auto;
-	}
 	.search-result--weekly & {
 		width: calc(25% - 2rem);
 		margin: spacing(1);
+		border: $border-width $white solid;
+		border-radius: $border-radius;
 	}
 }
 
 .city__content {
-	background: $white;
-	border-radius: $border-radius;
+	color: $white;
 	.search-result--current & {
 		padding: spacing(2);
-
 	}
 	.search-result--weekly & {
 		padding: spacing(1);
 	}
 }
 
-.city-list__icon {
-	@include font-size(2xl);
+.city-weather {
+	.search-result--current & {
+		@include flex(center, center, nowrap);
+	}
+
+	&__icon {
+		@include font-size(3xl);
+	}
 }
 
-.city-list__temperature {
-	@include font-size(2xl);
+.city__temperature {
+	@include flex(center, center, nowrap);
+	font-size: 2rem;
+	line-height: 1;
+	margin-top: spacing(1);
+	&__current {
+		font-size: 16rem;
+		margin-right: spacing(2);
+		.city__unit {
+			font-size: 10%;
+			top: -8rem;
+		}
+	}
 }
-
-// .remove-city-button {
-// 	position: absolute;
-// 	right: 0;
-// 	top: 0;
-// 	color: $color-subtext;
-// }
 
 
 
@@ -146,6 +132,25 @@ body {
 	}
 }
 
+
+
+// ------------- //
+// SEARCH RESULT //
+// ------------- //
+
 .search-result--weekly {
 	@include flex(center, stretch, wrap);
 }
+
+
+
+// ----------------------- //
+// CONTENT TOGGLING BUTTON //
+// ----------------------- //
+
+.back-to-daily-button {
+	position: absolute;
+	left: spacing(2);
+	top: spacing(6);
+}
+
